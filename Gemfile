@@ -10,6 +10,8 @@ gem "middleman-syntax"
 # Plugin for middleman to generate Github pages
 gem 'middleman-gh-pages'
 
+gem 'capistrano', '~> 3.2.0'
+
 # Live-reloading plugin
 gem "middleman-livereload", "~> 3.3.0"
 
