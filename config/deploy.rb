@@ -4,36 +4,23 @@ lock '3.2.1'
 set :application, "RunApiDocs"
 set :repo_url, 'git@github.com:RUNDSP/run_api_docs.git'
 set :deploy_to, "/mnt/app/#{application}"
+set :ssh_options, { forward_agent: true }
+
+## hipchat ##
+# require 'hipchat/capistrano'
+# set :hipchat_token, "263a958e7966308a16240ba789e37f"
+# set :hipchat_room_name, "Engineering"
+# set :hipchat_announce, true
 
 # Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-
-# Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
-
-# Default value for :scm is :git
-# set :scm, :git
-
-# Default value for :format is :pretty
-# set :format, :pretty
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default value for :log_level is :debug
-# set :log_level, :debug
+set :log_level, :info
 
-# Default value for :pty is false
-# set :pty, true
+# set :linked_dirs, %w{ log }
 
-# Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
 
-# Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
 
 namespace :deploy do
 
