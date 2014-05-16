@@ -11,7 +11,7 @@ gem "middleman-syntax", "2.0.0"
 gem 'middleman-gh-pages', "0.0.3"
 
 group :development do
-  gem 'capistrano', '3.2.0', require: false
+  gem 'capistrano', '3.2.1', require: false
 end
 
 # Live-reloading plugin

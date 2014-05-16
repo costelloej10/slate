@@ -3,7 +3,7 @@ lock '3.2.1'
 
 set :application, "RunApiDocs"
 set :repo_url, 'git@github.com:RUNDSP/run_api_docs.git'
-set :deploy_to, "/mnt/app/#{application}"
+set :deploy_to, "/mnt/app/#{fetch(:application)}"
 set :ssh_options, { forward_agent: true }
 
 ## hipchat ##
