@@ -2,13 +2,13 @@
 # the following line to use "https"
 source 'http://rubygems.org'
 
-gem "middleman", "~>3.3.0"
+gem "middleman", "~> 3.3.0"
 
 # For syntax highlighting
-gem "middleman-syntax"
+gem "middleman-syntax", "~> 2.0.0"
 
 # Plugin for middleman to generate Github pages
-gem 'middleman-gh-pages'
+gem 'middleman-gh-pages', "~> 0.0.3"
 
 gem 'capistrano', '~> 3.2.0'
 
@@ -27,4 +27,4 @@ end
 
 gem "rake", "~> 10.3.0"
 
-gem 'therubyracer', :platforms => :ruby
+gem 'therubyracer', "~> 0.12.1", :platforms => :ruby

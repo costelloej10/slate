@@ -4,8 +4,12 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-set  :gateway, "prod-app1.rundsp.com"
-role :web, *%w( prod-app1.rundsp.com prod-app2.rundsp.com )
+set :stage, :production
+
+server "prod-app1.rundsp.com", user: "deploy", roles: %w{web app}
+server "prod-app2.rundsp.com", user: "deploy", roles: %w{web app}
+
+set :branch, ENV["REVISION"] || ENV["BRANCH_NAME"] || "master"
 
 set :ruby, "/usr/local/bin/ruby"
 # Extended Server Syntax
@@ -13,9 +17,6 @@ set :ruby, "/usr/local/bin/ruby"
 # This can be used to drop a more detailed server definition into the
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
-
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
-
 
 # Custom SSH Options
 # ==================
