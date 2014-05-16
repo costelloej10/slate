@@ -6,6 +6,8 @@ set :repo_url, 'git@github.com:RUNDSP/run_api_docs.git'
 set :deploy_to, "/mnt/app/#{fetch(:application)}"
 set :ssh_options, { forward_agent: true }
 
+# SSHKit.config.command_map[:rake]  = "bundle exec rake"
+
 ## hipchat ##
 # require 'hipchat/capistrano'
 # set :hipchat_token, "263a958e7966308a16240ba789e37f"
@@ -19,8 +21,6 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 set :log_level, :info
 
 # set :linked_dirs, %w{ log }
-
-
 
 namespace :deploy do
 
