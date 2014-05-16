@@ -24,7 +24,7 @@ gem "wdm", "0.1.0", :platforms => [:mswin, :mingw]
 
 # Cross-templating language block fix for Ruby 1.8
 platforms :mri_18 do
-  gem "ruby18_source_location"
+  gem "ruby18_source_location", "0.2"
 end
 
 gem "rake", "10.3.0"
