@@ -18,7 +18,7 @@ set :ssh_options, { forward_agent: true }
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default value for :log_level is :debug
-set :log_level, :info
+set :log_level, :debug
 
 # set :linked_dirs, %w{ log }
 
@@ -27,7 +27,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app) do
-      execute "bundle exec middleman build"
+      execute "cd #{release_path} && bundle exec middleman build"
     end
   end
 
