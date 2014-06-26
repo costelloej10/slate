@@ -742,17 +742,17 @@
         // calculateHeights
         // ----
         //      ADDED BY ROBERT
-        calculateHeights: function() {
-            var self = this;
-            self.cachedHeights = [];
-            self.cachedAnchors = [];
-            var anchors = $(self.options.context).find("div[data-unique]");
-            anchors.each(function(idx) {
-                var distance = (($(this).next().length ? $(this).next() : $(this)).offset().top - self.options.highlightOffset);
-                self.cachedHeights[idx] = distance;
-            });
-            self.cachedAnchors = anchors;
-        },
+        // calculateHeights: function() {
+        //     var self = this;
+        //     self.cachedHeights = [];
+        //     self.cachedAnchors = [];
+        //     var anchors = $(self.options.context).find("div[data-unique]");
+        //     anchors.each(function(idx) {
+        //         var distance = (($(this).next().length ? $(this).next() : $(this)).offset().top - self.options.highlightOffset);
+        //         self.cachedHeights[idx] = distance;
+        //     });
+        //     self.cachedAnchors = anchors;
+        // },
 
         // Show
         // ----

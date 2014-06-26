@@ -48,7 +48,7 @@ You must replace `your_auth_token` with your personal API key.
 ## Get All Campaigns
 
 ```shell
-curl http://portal.runads.com/api/v1/campaigns -H 'Authorization: Token token="your_auth_token"'
+curl http://portal.rundsp.com/api/v1/campaigns -H 'Authorization: Token token="your_auth_token"'
 ```
 
 > The above command returns JSON structured like this:
@@ -157,7 +157,7 @@ This endpoint retrieves all campaigns associated with your account.
 
 ### HTTP Request
 
-`GET http://portal.runads.com/api/v1/campaigns`
+`GET http://portal.rundsp.com/api/v1/campaigns`
 
 ### Query Parameters
 
@@ -172,7 +172,7 @@ Remember — a happy campaign is an authenticated campaign!
 ## Get a Specific Campaign
 
 ```shell
-curl http://portal.runads.com/api/v1/campaigns/:campaign_id -H 'Authorization: Token token="your_auth_token"'
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id -H 'Authorization: Token token="your_auth_token"'
 ```
 
 > The above command returns JSON structured like this:
@@ -283,7 +283,7 @@ This endpoint retrieves a specific campaign.
 
 ### HTTP Request
 
-`GET http://portal.runads.com/api/v1/campaigns/:campaign_id`
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id`
 
 ### URL Parameters
 
@@ -295,7 +295,7 @@ Parameter | Description | Required
 ## Get Campaign Interval Data 
 
 ```shell
-curl http://portal.runads.com/api/v1/campaigns/:campaign_id/:interval/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/:interval/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
 ```
 
 > The above command returns JSON structured like this:
@@ -334,7 +334,7 @@ This endpoint retrieves interval data about a specific campaign.
 
 ### HTTP Request
 
-`GET http://portal.runads.com/api/v1/campaigns/:campaign_id/:interval/:start_date/:end_date`
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/:interval/:start_date/:end_date`
 
 ### URL Parameters
 
@@ -344,15 +344,15 @@ Parameter | Description | Required
 :interval | Time interval at which to show data| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
-**Interval values are hours, days, weeks, and months
+**Interval values are: hours, days, weeks, and months
 
-
+**Date formats are: yyyy-mm-dd-hh (hh values are in the range 00-24)
 
 
 ## Get Category Specific Data 
 
 ```shell
-curl http://portal.runads.com/api/v1/campaigns/:campaign_id/:category/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/:category/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
 ```
 
 > The above command returns JSON structured like this:
@@ -391,7 +391,7 @@ This endpoint retrieves category specific data about a campaign.
 
 ### HTTP Request
 
-`GET http://portal.runads.com/api/v1/campaigns/:campaign_id/:category/:start_date/:end_date`
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/:category/:start_date/:end_date`
 
 ### URL Parameters
 
@@ -401,14 +401,15 @@ Parameter | Description | Required
 :category | Type of data to filter by| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
-
 **Category values are ad_formats, campaign, conversions, devices, exchanges, placements, segments, and referers.
 
+
+**Date formats are: yyyy-mm-dd-hh (hh values are in the range 00-24)
 
 ## Get Placement Specific Data 
 
 ```shell
-curl http://portal.runads.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
 ```
 
 > The above command returns JSON structured like this:
@@ -447,7 +448,7 @@ This endpoint retrieves placement specific data about a campaign.
 
 ### HTTP Request
 
-`GET http://portal.runads.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date`
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date`
 
 ### URL Parameters
 
@@ -457,14 +458,14 @@ Parameter | Description | Required
 :placement_category | Type of placement category to filter by| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
+**Placement category values are: segments, referers and exchanges.
 
-**Placement category values are segments, referers, and exchanges.
-
+**Date formats are: yyyy-mm-dd-hh (hh values are in the range 00-24)
 
 ## Get all placements for a campaign
 
 ```shell
-curl http://portal.runads.com/api/v1/campaigns/:campaign_id/placements -H 'Authorization: Token token="your_auth_token"'
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements -H 'Authorization: Token token="your_auth_token"'
 ```
 
 > The above command returns JSON structured like this:
@@ -529,7 +530,7 @@ This endpoint retrieves all placements for a campaign.
 
 ### HTTP Request
 
-`GET http://portal.runads.com/api/v1/campaigns/:campaign_id/placements`
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements`
 
 ### URL Parameters
 
@@ -541,7 +542,7 @@ Parameter | Description | Required
 ## Get a specific placement for a campaign
 
 ```shell
-curl http://portal.runads.com/api/v1/campaigns/:campaign_id/placements/:placement_id -H 'Authorization: Token token="your_auth_token"'
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_id -H 'Authorization: Token token="your_auth_token"'
 ```
 
 > The above command returns JSON structured like this:
@@ -606,7 +607,7 @@ This endpoint retrieves a specific placement for a campaign.
 
 ### HTTP Request
 
-`GET http://portal.runads.com/api/v1/campaigns/:campaign_id/placements/:placement_id`
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_id`
 
 ### URL Parameters
 
@@ -620,7 +621,7 @@ Parameter | Description | Required
 ## Get the top 10 placements by click-through rate for a campaign
 
 ```shell
-curl http://portal.runads.com/api/v1/campaigns/:campaign_id/placements/top/ctr -H 'Authorization: Token token="your_auth_token"'
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/top/ctr -H 'Authorization: Token token="your_auth_token"'
 ```
 
 > The above command returns JSON structured like this:
@@ -641,7 +642,7 @@ This endpoint retrieves the top 10 placements by click-through rate for a campai
 
 ### HTTP Request
 
-`GET http://portal.runads.com/api/v1/campaigns/:campaign_id/placements/top/ctr`
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/top/ctr`
 
 ### URL Parameters
 
