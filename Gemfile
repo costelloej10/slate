@@ -13,6 +13,7 @@ gem 'middleman-gh-pages', "0.0.3"
 group :development do
   gem 'capistrano', '3.2.1', require: false
   gem 'capistrano-bundler', '1.1.2'
+  gem 'hipchat', '1.1.0'
 end
 
 # Live-reloading plugin

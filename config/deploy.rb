@@ -9,10 +9,10 @@ set :ssh_options, { forward_agent: true }
 # SSHKit.config.command_map[:rake]  = "bundle exec rake"
 
 ## hipchat ##
-# require 'hipchat/capistrano'
-# set :hipchat_token, "263a958e7966308a16240ba789e37f"
-# set :hipchat_room_name, "Engineering"
-# set :hipchat_announce, true
+require 'hipchat/capistrano'
+set :hipchat_token, "263a958e7966308a16240ba789e37f"
+set :hipchat_room_name, "Engineering"
+set :hipchat_announce, true
 
 # Default branch is :master
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
