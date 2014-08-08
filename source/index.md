@@ -891,7 +891,7 @@ Parameter | Description | Required
 :placement_id | The ID of the placement to update | Yes
 :delivery_type | (Normal, Witness) | Yes
 :adm_tag_type | ("conversion", "conversion_pixel", "conversion_pixel_ssl") | Yes
-:ad_format_id | | Yes
+:ad_format_id | Choose an ad format for this placement (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_formats -H 'Authorization: Token token="e9b65078414d71f5516907014e5236fafb8419fa29e625e67b1b24f08a5a9abb"')| Yes
 :state | State of placement ("active", "pending", "failed") | Yes
 :goal_type | ("impressions", "clearing_cost_budget", "client_cost_budget") | Yes
 :goal_value | Number of impressions or  dollar amount | Yes if goal_type is "impressions"
@@ -922,12 +922,12 @@ Parameter | Description | Required
 :only_buy_inventory_with_lat_lon |Only buy mobile inventory when GPS coordinates are passed | No 
 :only_buy_known_ip |Only buy inventory when IP address is "known" (not unclassified) | No 
 :geo_type |Choose the dimension of your geo-target (country, DMA, ZIP, etc.) | No 
-:country | Target by Country (more info: curl http://portal.rundsp.com/api/v1/campaigns/51acb4fe1aeaf05969000961/placements/list_countries -H 'Authorization: Token token="your_auth_token"')| No 
+:country | Target by Country (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_countries -H 'Authorization: Token token="your_auth_token"')| No 
 :geo_zips |Target by ZIP Code (Format is comma-separated string) | No 
-:region |Target by State/Region (more info: curl -X GET -d "name={STATE/REGION}" http://portal.rundsp.com/api/v1/campaigns/51acb4fe1aeaf05969000961/placements/list_regions -H 'Authorization: Token token="your_auth_token"') | No 
+:region |Target by State/Region (more info: curl -X GET -d "name={STATE/REGION}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_regions -H 'Authorization: Token token="your_auth_token"') | No 
 :city | Target by City| No 
-:dma_ids |Target by DMA (more info: curl http://portal.rundsp.com/api/v1/campaigns/51acb4fe1aeaf05969000961/placements/list_dmas -H 'Authorization: Token token="your_auth_token"') | No 
-:geo_points_radii_csv |Target by Lat/Long Coordinate (more info: curl http://portal.rundsp.com/api/v1/campaigns/51acb4fe1aeaf05969000961/placements/list_geo_points -H 'Authorization: Token token="your_auth_token"') | No 
+:dma_ids |Target by DMA (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_dmas -H 'Authorization: Token token="your_auth_token"') | No 
+:geo_points_radii_csv |Target by Lat/Long Coordinate (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_geo_points -H 'Authorization: Token token="your_auth_token"') | No 
 :video_min_width |Choose minimum width of video player | No 
 :video_adtypes | Choose "Interstitial", "In-Banner", or "In-Stream" | No 
 :only_buy_volume_on | Target video players with volume turned on | No 
@@ -943,7 +943,7 @@ Parameter | Description | Required
 :device_models | Target specific device models only (ie iPhone)| No 
 :retargeting_pixel_ids | | No 
 :segment_ids | Target a third party data segment | No 
-:os | Target specific operating systems only (more info: curl http://portal.rundsp.com/api/v1/campaigns/51acb4fe1aeaf05969000961/placements/list_os -H 'Authorization: Token token="your_auth_token"') | No 
+:os | Target specific operating systems only (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_os -H 'Authorization: Token token="your_auth_token"') | No 
 :age | Target users of certain ages only | No 
 :day_parting | Only buy media within a certain window during the day or on specific days| No
 :placement_objective |Pace to Impressions, Client Cost, or Clearing Cost| No
