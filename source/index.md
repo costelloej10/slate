@@ -411,16 +411,12 @@ Parameter | Description | Required
 :start_at | Date campaign starts | Yes
 :end_at| Date campaign end | Yes
 :advertiser_name| Name of advertiser| Yes
-:placements_goal_type| Metric goal for placements | Yes
+:paused | Whether a campaign is paused. Boolean field that defaults to false. | No
+:placements_goal_type| Metric goal for placements (values: "impressions" , "clearing_cost_budget", or "client_cost_budget") | Yes
 :frequency_cap_by| Metric to cap by | Yes
 :frequency_cap_value| Value for that cap| No
 :postback_conversion_campaign| | No
-:rtb (default = true in controller)| |
-from_form (default = true in controller)| |
-:created_in_portal(default = false in controller)| |
 **Date formats are yyyy-mm-dd
-
-**Placements Goal Type values: "impressions" , "clearing_cost_budget", "client_cost_budget"
 ## Update a Campaign
 
 ```shell
@@ -883,78 +879,75 @@ Parameter | Description | Required
 
 ### Placement Parameters
 
-Parameter | Description | Required
---------- | ----------- | --------
-:name | The name of the placement | Yes
-:sitelist_type | Type of Sitelist to run ads on (Off, Whitelist, Blacklist) | Yes
-:campaign_id | The ID of the campaign to retrieve | Yes
-:placement_id | The ID of the placement to update | Yes
-:delivery_type | (Normal, Witness) | Yes
-:adm_tag_type | ("conversion", "conversion_pixel", "conversion_pixel_ssl") | Yes
-:ad_format_id | Choose an ad format for this placement (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_formats -H 'Authorization: Token token="e9b65078414d71f5516907014e5236fafb8419fa29e625e67b1b24f08a5a9abb"')| Yes
-:state | State of placement ("active", "pending", "failed") | Yes
-:goal_type | ("impressions", "clearing_cost_budget", "client_cost_budget") | Yes
-:goal_value | Number of impressions or  dollar amount | Yes if goal_type is "impressions"
-:goal_target_clearing_cost | Only applies when campaign is pacing off clearing cost|  Yes if goal_type is "clearing_cost_budget"
-:goal_target_client_cost | Only applies when campaign is pacing off client cost|  Yes if goal_type is "client_cost_budget"
-:cpa_goal | CPA Goal advertiser is trying to hit. | Yes
-:rtb_setting | Hash with attributes below related to placement real-time bidding settings| No
-:price | Maximum bid price.| No 
-:category_id | Category of the ad unit, ie Business, Healthcase, Retail.| No 
-:catch_up_type | Pace either ASAP (deliver hourly impressions as quickly as possible) or Spread Evenly (deliver consistently throughout the hour) or None| No 
-:auto_exchange_weights | Allow RUN's algorithm to determine which exchanges to run on| No 
-:exchange_weights | Manually select the exchanges to run on. Hash with exchanges as keys and weight (distribution) as values. Exchanges are: Nexage, OpenX, mopub, rubicon, adx, spotx, liverail, brx | No 
-:frequency_cap | Turn Frequency Cap On/Off| No 
-:frequency_cap_value | Set desired frequency per interval| No 
-:frequency_cap_interval_days | Choose an interval in days| No 
-:deal_id | Activate Deal ID| No 
-:deal_id_value | Input the ID for the Deal| No 
-:serve_300x50_in_320x50 | Also run 300x50 sized units in 320x50 sized ad slots| No 
-:domain |Advertiser domain, ie www.mcdonalds.com | No 
-:ad_type_id | Iframe, JavaScript, XHTML banner or XHTML text| No 
-:creative_attribute_id |Declare any important attributes of your tag (expandable, click to play, etc.) | No 
-:mraid_has_video |Include if running an MRAID tag that plays a video ad | No 
-:video_types |Declare what kind of video files are part of the tag (MP4, FLV, etc) | No 
-:video_attributes |Declare auto-play, click-to-play, etc. | No 
-:isps | Choose a whitelist of ISPs to target| No 
-:isp | | No 
-:gender | Target Males or Females Only: "Any", "M", "F" | No 
-:only_buy_inventory_with_lat_lon |Only buy mobile inventory when GPS coordinates are passed | No 
-:only_buy_known_ip |Only buy inventory when IP address is "known" (not unclassified) | No 
-:geo_type |Choose the dimension of your geo-target (country, DMA, ZIP, etc.) | No 
-:country | Target by Country (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_countries -H 'Authorization: Token token="your_auth_token"')| No 
-:geo_zips |Target by ZIP Code (Format is comma-separated string) | No 
-:region |Target by State/Region (more info: curl -X GET -d "name={STATE/REGION}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_regions -H 'Authorization: Token token="your_auth_token"') | No 
-:city | Target by City| No 
-:dma_ids |Target by DMA (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_dmas -H 'Authorization: Token token="your_auth_token"') | No 
-:geo_points_radii_csv |Target by Lat/Long Coordinate (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_geo_points -H 'Authorization: Token token="your_auth_token"') | No 
-:video_min_width |Choose minimum width of video player | No 
-:video_adtypes | Choose "Interstitial", "In-Banner", or "In-Stream" | No 
-:only_buy_volume_on | Target video players with volume turned on | No 
-:tld_wlist | Target top level domains ie .biz or .info sites | No 
-:only_buy_transparent_inventory | Only buy inventory when the domain is passed transparently| No 
-:only_buy_clear_text | Only buy in-app inventory when the device ID is passed in clear text format| No 
-:inventory_type | Choose in-app, web only, or both (defaults to both) ["Web and in-app", ""], ["Web only", "site"], ["In-app only", "app"] | No 
-:ad_position | Choose above the fold or below the fold or both ["Any position", ""], ["Above the fold only", "above"], ["Below the fold only", "below"] | No 
-:category_ids |Target by IAB Category (Contextual Targeting) | No 
-:ctr_optimize | Turn the CTR Algorithm On/Off (must have a baseline of information first) | No 
-:device_targeting | Target specific channels Desktop, Mobile, All| No 
-:device_makes | Target specfic device makers only (ie Apple)| No 
-:device_models | Target specific device models only (ie iPhone)| No 
-:retargeting_pixel_ids | | No 
-:segment_ids | Target a third party data segment | No 
-:os | Target specific operating systems only (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_os -H 'Authorization: Token token="your_auth_token"') | No 
-:age | Target users of certain ages only | No 
-:day_parting | Only buy media within a certain window during the day or on specific days| No
-:placement_objective |Pace to Impressions, Client Cost, or Clearing Cost| No
-:start_at | Start Date of Placement| 
-:end_at | End Date of Placement| 
-:charging_amount |Client Cost (CPM Client is paying you) | 
-:sitelist_type |Whitelist or Blacklist| No
-:sitelist_ids || No
-:language_country_ids | Target devices with specific languages set| No
-:retargeting_pixel_segment_ids |Target a specific Retargeting pool| No
-
+Parameter | Description | Parameter Type | Required
+--------- | ----------- | -------- | --------
+:name | The name of the placement | String|Yes
+:sitelist_type | Type of Sitelist to run ads on (Off, Whitelist, Blacklist) | String|Yes
+:delivery_type | (Normal, Witness) | String|Yes
+:adm_tag_type | ("conversion", "conversion_pixel", "conversion_pixel_ssl") | String|Yes
+:ad_format_id | Choose an ad format for this placement (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_formats -H 'Authorization: Token token="e9b65078414d71f5516907014e5236fafb8419fa29e625e67b1b24f08a5a9abb"')| String|Yes
+:state | State of placement ("active", "pending", "failed") | String|Yes
+:goal_type | ("impressions", "clearing_cost_budget", "client_cost_budget") |String |Yes
+:goal_value | Number of impressions or  dollar amount | String|Yes if goal_type is "impressions"
+:goal_target_clearing_cost | Only applies when campaign is pacing off clearing cost|String | Yes if goal_type is "clearing_cost_budget"
+:goal_target_client_cost | Only applies when campaign is pacing off client cost| String| Yes if goal_type is "client_cost_budget"
+:cpa_goal | CPA Goal advertiser is trying to hit. | String|Yes
+:rtb_setting | Hash with attributes below related to placement real-time bidding settings|Hash| No
+:price | Maximum bid price.|String| No 
+:live | Whether campaign is live. Defaults to false.|Boolean| No
+:category_id | Category of the ad unit, ie Business, Healthcase, Retail.|String| No 
+:catch_up_type | Pace either ASAP (deliver hourly impressions as quickly as possible) or Spread Evenly (deliver consistently throughout the hour) or None|String| No 
+:auto_exchange_weights | Allow RUN's algorithm to determine which exchanges to run on|Boolean| No 
+:exchange_weights | Manually select the exchanges to run on. Hash with exchanges as keys and weight (distribution) as values. Exchanges are: Nexage, OpenX, mopub, rubicon, adx, spotx, liverail, brx |Hash| No 
+:frequency_cap | Turn Frequency Cap On/Off|Boolean| No 
+:frequency_cap_value | Set desired frequency per interval|String| No 
+:frequency_cap_interval_days | Choose an interval in days|String| No 
+:deal_id | Activate Deal ID|Boolean| No 
+:deal_id_value | Input the ID for the Deal|String| No 
+:serve_300x50_in_320x50 | Also run 300x50 sized units in 320x50 sized ad slots|Boolean| No 
+:domain |Advertiser domain, ie www.mcdonalds.com |String| No 
+:ad_type_id | Iframe, JavaScript, XHTML banner or XHTML text|String| No 
+:creative_attribute_id |Declare any important attributes of your tag (expandable, click to play, etc.) |String| No 
+:mraid_has_video |Include if running an MRAID tag that plays a video ad |Boolean| No 
+:video_types |Declare what kind of video files are part of the tag (MP4, FLV, etc) |String| No 
+:video_attributes |Declare auto-play, click-to-play, etc. |String| No 
+:isps | Choose a whitelist of ISPs to target|String| No 
+:isp | |String| No 
+:gender | Target Males or Females Only: "Any", "M", "F" |String| No 
+:only_buy_inventory_with_lat_lon |Only buy mobile inventory when GPS coordinates are passed |Boolean| No 
+:only_buy_known_ip |Only buy inventory when IP address is "known" (not unclassified) |Boolean| No 
+:geo_type |Choose the dimension of your geo-target (country, DMA, ZIP, etc.) |String| No 
+:country | Target by Country (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_countries -H 'Authorization: Token token="your_auth_token"')|String| No 
+:geo_zips |Target by ZIP Code (Format is comma-separated string) |String| No 
+:region |Target by State/Region (more info: curl -X GET -d "name={STATE/REGION}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_regions -H 'Authorization: Token token="your_auth_token"') |String| No 
+:city | Target by City|String| No 
+:dma_ids |Target by DMA (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_dmas -H 'Authorization: Token token="your_auth_token"') |String| No 
+:geo_points_radii_csv |Target by Lat/Long Coordinate (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_geo_points -H 'Authorization: Token token="your_auth_token"') |String| No 
+:video_min_width | Choose minimum width of video player |String| No 
+:video_adtypes | Choose "Interstitial", "In-Banner", or "In-Stream" |String| No 
+:only_buy_volume_on | Target video players with volume turned on |Boolean| No 
+:tld_wlist | Target top level domains ie .biz or .info sites |String| No 
+:only_buy_transparent_inventory | Only buy inventory when the domain is passed transparently|Boolean| No 
+:only_buy_clear_text | Only buy in-app inventory when the device ID is passed in clear text format|Boolean| No 
+:inventory_type | Choose in-app, web only, or both (defaults to both) ["Web and in-app", ""], ["Web only", "site"], ["In-app only", "app"] |String| No 
+:ad_position | Choose above the fold or below the fold or both ["Any position", ""], ["Above the fold only", "above"], ["Below the fold only", "below"] |String| No 
+:category_ids |Target by IAB Category (Contextual Targeting) |String| No 
+:ctr_optimize | Turn the CTR Algorithm On/Off (must have a baseline of information first) |Boolean| No 
+:device_targeting | Target specific channels Desktop, Mobile, All|String| No 
+:device_makes | Target specfic device makers only (ie Apple - more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_makes -H 'Authorization: Token token="your_auth_token"')|String| No 
+:device_models | Target specific device models only (ie iPhone - more info: curl -X GET -d "name=Device Model" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_models -H 'Authorization: Token token="your_auth_token"')|String| No 
+:segment_ids | Target a third party data segment |String| No 
+:os | Target specific operating systems only (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_os -H 'Authorization: Token token="your_auth_token"') |String| No 
+:age | Target users of certain ages only |String| No 
+:day_parting | Only buy media within a certain window during the day or on specific days|Array| No
+:placement_objective |Pace to Impressions, Client Cost, or Clearing Cost|String| No
+:start_at | Start Date of Placement |String| Yes
+:end_at | End Date of Placement|String| Yes
+:charging_amount |Client Cost (CPM Client is paying you) | String|No
+:sitelist_type |Whitelist or Blacklist|String| No
+:sitelist_ids ||String| No
+:language_country_ids | Target devices with specific languages set|String| No
+:retargeting_pixel_segment_ids |Target a specific Retargeting pool|String| No
 ## Update a placement
 
 ```shell
@@ -1034,22 +1027,75 @@ Parameter | Description | Required
 
 ### Placement Parameters
 
-Parameter | Description | Required
---------- | ----------- | --------
-:name | The name of the placement | Yes
-:sitelist_type | Type of Sitelist to run ads on (Off, Whitelist, Blacklist) | Yes
-:campaign_id | The ID of the campaign to retrieve | Yes
-:placement_id | The ID of the placement to update | Yes
-:delivery_type | (Normal, Witness) | Yes
-:adm_tag_type | ("conversion", "conversion_pixel", "conversion_pixel_ssl") | Yes
-:ad_format_id | | Yes
-:state | State of placement ("active", "pending", "failed") | Yes
-:goal_type | ("impressions", "clearing_cost_budget", "client_cost_budget") | Yes
-:goal_value | | Yes if goal_type is "impressions"
-:goal_target_clearing_cost | |  Yes if goal_type is "clearing_cost_budget"
-:goal_target_client_cost | |  Yes if goal_type is "client_cost_budget"
-:cpa_goal | | Yes
-
+Parameter | Description | Parameter Type | Required
+--------- | ----------- | -------- | --------
+:name | The name of the placement | String|Yes
+:sitelist_type | Type of Sitelist to run ads on (Off, Whitelist, Blacklist) | String|Yes
+:delivery_type | (Normal, Witness) | String|Yes
+:adm_tag_type | ("conversion", "conversion_pixel", "conversion_pixel_ssl") | String|Yes
+:ad_format_id | Choose an ad format for this placement (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_formats -H 'Authorization: Token token="e9b65078414d71f5516907014e5236fafb8419fa29e625e67b1b24f08a5a9abb"')| String|Yes
+:state | State of placement ("active", "pending", "failed") | String|Yes
+:goal_type | ("impressions", "clearing_cost_budget", "client_cost_budget") |String |Yes
+:goal_value | Number of impressions or  dollar amount | String|Yes if goal_type is "impressions"
+:goal_target_clearing_cost | Only applies when campaign is pacing off clearing cost|String | Yes if goal_type is "clearing_cost_budget"
+:goal_target_client_cost | Only applies when campaign is pacing off client cost| String| Yes if goal_type is "client_cost_budget"
+:cpa_goal | CPA Goal advertiser is trying to hit. | String|Yes
+:rtb_setting | Hash with attributes below related to placement real-time bidding settings|Hash| No
+:price | Maximum bid price.|String| No 
+:live | Whether campaign is live. Defaults to false.|Boolean| No
+:category_id | Category of the ad unit, ie Business, Healthcase, Retail.|String| No 
+:catch_up_type | Pace either ASAP (deliver hourly impressions as quickly as possible) or Spread Evenly (deliver consistently throughout the hour) or None|String| No 
+:auto_exchange_weights | Allow RUN's algorithm to determine which exchanges to run on|Boolean| No 
+:exchange_weights | Manually select the exchanges to run on. Hash with exchanges as keys and weight (distribution) as values. Exchanges are: Nexage, OpenX, mopub, rubicon, adx, spotx, liverail, brx |Hash| No 
+:frequency_cap | Turn Frequency Cap On/Off|Boolean| No 
+:frequency_cap_value | Set desired frequency per interval|String| No 
+:frequency_cap_interval_days | Choose an interval in days|String| No 
+:deal_id | Activate Deal ID|Boolean| No 
+:deal_id_value | Input the ID for the Deal|String| No 
+:serve_300x50_in_320x50 | Also run 300x50 sized units in 320x50 sized ad slots|Boolean| No 
+:domain |Advertiser domain, ie www.mcdonalds.com |String| No 
+:ad_type_id | Iframe, JavaScript, XHTML banner or XHTML text|String| No 
+:creative_attribute_id |Declare any important attributes of your tag (expandable, click to play, etc.) |String| No 
+:mraid_has_video |Include if running an MRAID tag that plays a video ad |Boolean| No 
+:video_types |Declare what kind of video files are part of the tag (MP4, FLV, etc) |String| No 
+:video_attributes |Declare auto-play, click-to-play, etc. |String| No 
+:isps | Choose a whitelist of ISPs to target|String| No 
+:isp | |String| No 
+:gender | Target Males or Females Only: "Any", "M", "F" |String| No 
+:only_buy_inventory_with_lat_lon |Only buy mobile inventory when GPS coordinates are passed |Boolean| No 
+:only_buy_known_ip |Only buy inventory when IP address is "known" (not unclassified) |Boolean| No 
+:geo_type |Choose the dimension of your geo-target (country, DMA, ZIP, etc.) |String| No 
+:country | Target by Country (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_countries -H 'Authorization: Token token="your_auth_token"')|String| No 
+:geo_zips |Target by ZIP Code (Format is comma-separated string) |String| No 
+:region |Target by State/Region (more info: curl -X GET -d "name={STATE/REGION}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_regions -H 'Authorization: Token token="your_auth_token"') |String| No 
+:city | Target by City|String| No 
+:dma_ids |Target by DMA (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_dmas -H 'Authorization: Token token="your_auth_token"') |String| No 
+:geo_points_radii_csv |Target by Lat/Long Coordinate (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_geo_points -H 'Authorization: Token token="your_auth_token"') |String| No 
+:video_min_width | Choose minimum width of video player |String| No 
+:video_adtypes | Choose "Interstitial", "In-Banner", or "In-Stream" |String| No 
+:only_buy_volume_on | Target video players with volume turned on |Boolean| No 
+:tld_wlist | Target top level domains ie .biz or .info sites |String| No 
+:only_buy_transparent_inventory | Only buy inventory when the domain is passed transparently|Boolean| No 
+:only_buy_clear_text | Only buy in-app inventory when the device ID is passed in clear text format|Boolean| No 
+:inventory_type | Choose in-app, web only, or both (defaults to both) ["Web and in-app", ""], ["Web only", "site"], ["In-app only", "app"] |String| No 
+:ad_position | Choose above the fold or below the fold or both ["Any position", ""], ["Above the fold only", "above"], ["Below the fold only", "below"] |String| No 
+:category_ids |Target by IAB Category (Contextual Targeting) |String| No 
+:ctr_optimize | Turn the CTR Algorithm On/Off (must have a baseline of information first) |Boolean| No 
+:device_targeting | Target specific channels Desktop, Mobile, All|String| No 
+:device_makes | Target specfic device makers only (ie Apple - more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_makes -H 'Authorization: Token token="your_auth_token"')|String| No 
+:device_models | Target specific device models only (ie iPhone - more info: curl -X GET -d "name=Device Model" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_models -H 'Authorization: Token token="your_auth_token"')|String| No 
+:segment_ids | Target a third party data segment |String| No 
+:os | Target specific operating systems only (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_os -H 'Authorization: Token token="your_auth_token"') |String| No 
+:age | Target users of certain ages only |String| No 
+:day_parting | Only buy media within a certain window during the day or on specific days|Array| No
+:placement_objective |Pace to Impressions, Client Cost, or Clearing Cost|String| No
+:start_at | Start Date of Placement |String| Yes
+:end_at | End Date of Placement|String| Yes
+:charging_amount |Client Cost (CPM Client is paying you) | String|No
+:sitelist_type |Whitelist or Blacklist|String| No
+:sitelist_ids ||String| No
+:language_country_ids | Target devices with specific languages set|String| No
+:retargeting_pixel_segment_ids |Target a specific Retargeting pool|String| No
 
 ## Get a specific placement for a campaign
 
@@ -1409,6 +1455,8 @@ Parameter | Description | Required
 :adunit_click_url | Where user is directed upon click | Yes
 :template_type | | Yes
 :adunit_impression_url | | No
+:vast_companion | | No
+:companion_ad_unit_ids | | Yes if vast_companion
 :third_party_tag | | Conditional (Yes if template_type is "Third-Party")
 :flash_version | | Conditional (Yes if template_type is "Flash")
 :html_code | | Conditional (Yes if template_type is "HTML")
@@ -1485,6 +1533,8 @@ Parameter | Description | Required
 :adunit_click_url | Where user is directed upon click | Yes
 :template_type | | Yes
 :adunit_impression_url | | No
+:vast_companion | | No
+:companion_ad_unit_ids | | Yes if vast_companion
 :third_party_tag | | Conditional (Yes if template_type is "Third-Party")
 :flash_version | | Conditional (Yes if template_type is "Flash")
 :html_code | | Conditional (Yes if template_type is "HTML")
