@@ -161,10 +161,6 @@ Parameter | Default | Description
 --------- | ------- | -----------
 None
 
-<aside class="success">
-Remember — a happy campaign is an authenticated campaign!
-</aside>
-
 ## Get a Specific Campaign
 
 ```shell
