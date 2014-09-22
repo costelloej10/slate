@@ -402,61 +402,7 @@ Parameter | Description | Required
 
 **Date formats are: yyyy-mm-dd-hh (hh values are in the range 00-24)
 
-## Get Placement Specific Data 
-
-```shell
-curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "avg_fre": 0,
-    "e_imp": 0,
-    "e_cli": 0,
-    "e_cost": 0,
-    "cli_con": 0,
-    "imp_con": 0,
-    "cli_con_xdp": 0,
-    "imp_con_xdp": 0,
-    "cost": 737.9165499999998,
-    "data_cost": 0,
-    "placement": "(0027)4581669-5 Demo: A35-64 with HHI > 100k (Marathon) - 728x90 / Run Of Site (ROS)",
-    "exchange": "rubicon",
-    "impressions": 343217,
-    "clicks": 288,
-    "reach": 0,
-    "ctr": 0.0008391192743949163,
-    "e_ctr": 0,
-    "imp_con_rate": 0,
-    "cli_con_rate": 0,
-    "imp_con_rate_xdp": 0,
-    "cli_con_rate_xdp": 0,
-    "con_rate": 0,
-    "con_rate_xdp": 0
-}
-```
-
-This endpoint retrieves placement specific data about a campaign.
-
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
-
-### HTTP Request
-
-`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date`
-
-### URL Parameters
-
-Parameter | Description | Required
---------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve | Yes
-:placement_category | Type of placement category to filter by| Yes
-:start_date | Start date of query| Yes
-:end_date | End date of query| Yes
-**Placement category values are: segments, referers and exchanges.
-
-**Date formats are: yyyy-mm-dd-hh (hh values are in the range 00-24)
+# Placements
 
 ## Get all placements for a campaign
 
@@ -612,6 +558,61 @@ Parameter | Description | Required
 :campaign_id | The ID of the campaign to retrieve | Yes
 :placement_id | The ID of the placement to retrieve| Yes
 
+## Get Placement Specific Data 
+
+```shell
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "avg_fre": 0,
+    "e_imp": 0,
+    "e_cli": 0,
+    "e_cost": 0,
+    "cli_con": 0,
+    "imp_con": 0,
+    "cli_con_xdp": 0,
+    "imp_con_xdp": 0,
+    "cost": 737.9165499999998,
+    "data_cost": 0,
+    "placement": "(0027)4581669-5 Demo: A35-64 with HHI > 100k (Marathon) - 728x90 / Run Of Site (ROS)",
+    "exchange": "rubicon",
+    "impressions": 343217,
+    "clicks": 288,
+    "reach": 0,
+    "ctr": 0.0008391192743949163,
+    "e_ctr": 0,
+    "imp_con_rate": 0,
+    "cli_con_rate": 0,
+    "imp_con_rate_xdp": 0,
+    "cli_con_rate_xdp": 0,
+    "con_rate": 0,
+    "con_rate_xdp": 0
+}
+```
+
+This endpoint retrieves placement specific data about a campaign.
+
+<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
+
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+:campaign_id | The ID of the campaign to retrieve | Yes
+:placement_category | Type of placement category to filter by| Yes
+:start_date | Start date of query| Yes
+:end_date | End date of query| Yes
+**Placement category values are: segments, referers and exchanges.
+
+**Date formats are: yyyy-mm-dd-hh (hh values are in the range 00-24)
 
 
 ## Get the top 10 placements by click-through rate for a campaign
