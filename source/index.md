@@ -648,6 +648,137 @@ Parameter | Description | Required
 
 
 
+# Ad Units
+
+## Get all ad units for a campaign
+
+```shell
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "_id": "53cebaee4a6f6813d7160000",
+    "aasm_state": "pending",
+    "ad_format_id": "50c8cbb91aeaf00526001980",
+    "ad_unit_clicks": [],
+    "adunit_id": null,
+    "campaign_id": "51e6b51a254deef6020001f5",
+    "name": "TTest Ad Unit Updated",
+    "placement_ids": [],
+    "template_type": "Image",
+    "ad_format": {
+        "_id": "50c8cbb91aeaf00526001980",
+        "full_name": "MMA - XX-Large Banner - (320x50)",
+        "height": 50,
+        "live": true,
+        "name": "XX-Large Banner",
+        "remote_format_id": 58,
+        "run_name": "MMA - XX-Large Banner - (320x50)",
+        "width": 320
+    },
+    "third_party_vast_url": null,
+    "duration": null,
+    "third_party_vast": true,
+    "mp4_ad_unit_file_url": null,
+    "flv_ad_unit_file_url": null,
+    "webm_ad_unit_file_url": null,
+    "flash_version": "6",
+    "vast_companion": false,
+    "companion_ad_units": [],
+    "companion_ad_unit_ids": [],
+    "html_code": null,
+    "javascript_code": null,
+    "adunit_click_url": "http://www.google.com",
+    "adunit_impression_url": null,
+    "placement_count": 0,
+    "adx_vendors": []
+}
+```
+
+This endpoint retrieves all ad units belonging to a campaign.
+
+<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
+
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+:campaign_id | The ID of the campaign to retrieve | Yes
+
+
+
+## Get a specific ad unit for a campaign
+
+```shell
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units/:ad_unit_id -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "_id": "53cebaee4a6f6813d7160000",
+    "aasm_state": "pending",
+    "ad_format_id": "50c8cbb91aeaf00526001980",
+    "ad_unit_clicks": [],
+    "adunit_id": null,
+    "campaign_id": "51e6b51a254deef6020001f5",
+    "name": "TTest Ad Unit Updated",
+    "placement_ids": [],
+    "template_type": "Image",
+    "ad_format": {
+        "_id": "50c8cbb91aeaf00526001980",
+        "full_name": "MMA - XX-Large Banner - (320x50)",
+        "height": 50,
+        "live": true,
+        "name": "XX-Large Banner",
+        "remote_format_id": 58,
+        "run_name": "MMA - XX-Large Banner - (320x50)",
+        "width": 320
+    },
+    "third_party_vast_url": null,
+    "duration": null,
+    "third_party_vast": true,
+    "mp4_ad_unit_file_url": null,
+    "flv_ad_unit_file_url": null,
+    "webm_ad_unit_file_url": null,
+    "flash_version": "6",
+    "vast_companion": false,
+    "companion_ad_units": [],
+    "companion_ad_unit_ids": [],
+    "html_code": null,
+    "javascript_code": null,
+    "adunit_click_url": "http://www.google.com",
+    "adunit_impression_url": null,
+    "placement_count": 0,
+    "adx_vendors": []
+}
+```
+
+This endpoint retrieves a specific ad unit for a campaign.
+
+<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
+
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units/:ad_unit_id`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+:campaign_id | The ID of the campaign to retrieve | Yes
+:ad_unit_id | The ID of the ad unit to retrieve| Yes
+
+
+
 
 
 
