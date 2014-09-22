@@ -275,8 +275,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id -H 'Authorization: T
 
 This endpoint retrieves a specific campaign.
 
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
-
 ### HTTP Request
 
 `GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id`
@@ -325,8 +323,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/:interval/:start_dat
 ```
 
 This endpoint retrieves interval data about a specific campaign.
-
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
 
 ### HTTP Request
 
@@ -382,8 +378,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/:category/:start_dat
 ```
 
 This endpoint retrieves category specific data about a campaign.
-
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
 
 ### HTTP Request
 
@@ -468,8 +462,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements -H 'Autho
 
 This endpoint retrieves all placements for a campaign.
 
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
-
 ### HTTP Request
 
 `GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements`
@@ -545,8 +537,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placemen
 
 This endpoint retrieves a specific placement for a campaign.
 
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
-
 ### HTTP Request
 
 `GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_id`
@@ -596,8 +586,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placemen
 
 This endpoint retrieves placement specific data about a campaign.
 
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
-
 ### HTTP Request
 
 `GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date`
@@ -634,8 +622,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/top/ctr -
 ```
 
 This endpoint retrieves the top 10 placements by click-through rate for a campaign.
-
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
 
 ### HTTP Request
 
@@ -701,8 +687,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units -H 'Authori
 
 This endpoint retrieves all ad units belonging to a campaign.
 
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
-
 ### HTTP Request
 
 `GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units`
@@ -764,8 +748,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units/:ad_unit_id
 ```
 
 This endpoint retrieves a specific ad unit for a campaign.
-
-<aside class="warning">If you're not using an administrator API key, note that some campaigns will return 403 Forbidden if they are hidden for admins only.</aside>
 
 ### HTTP Request
 
