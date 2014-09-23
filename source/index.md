@@ -12,7 +12,7 @@ search: true
 
 # Introduction
 
-Welcome to the Run Ads API. You can use our API to access Run Ads API endpoints, which can get information on various campaigns in our database.
+Welcome to the RUN Campaign Management API. You can use this API to gain access to campaign details and analytics.
 
 We have language bindings in Shell. You can view code examples in the dark area to the right.
 
