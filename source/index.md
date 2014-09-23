@@ -18,10 +18,9 @@ We have language bindings in Shell. You can view code examples in the dark area 
 
 # Authentication
 
-> To authorize, use this code:
+> To authorize, use this format:
 
-```shell
-# With shell, you can just pass the correct header with each request
+```
 curl "api_endpoint_here"
   -H 'Authorization: Token token="your_auth_token"'
 
@@ -43,7 +42,7 @@ You must replace `your_auth_token` with your personal API key.
 
 ## Get All Campaigns
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -163,7 +162,7 @@ None
 
 ## Get a Specific Campaign
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -284,7 +283,7 @@ Parameter | Description | Required
 
 ## Get Campaign Interval Data 
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/:interval/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -339,7 +338,7 @@ Parameter | Description | Required
 
 ## Get Category Specific Data 
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/:category/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -396,7 +395,7 @@ Parameter | Description | Required
 
 ## Get all placements for a campaign
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -471,7 +470,7 @@ Parameter | Description | Required
 
 ## Get a specific placement for a campaign
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_id -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -546,7 +545,7 @@ Parameter | Description | Required
 
 ## Get Placement Specific Data 
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/:placement_category/:start_date/:end_date -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -601,7 +600,7 @@ Parameter | Description | Required
 
 ## Get the top 10 placements by click-through rate for a campaign
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements/top/ctr -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -635,7 +634,7 @@ Parameter | Description | Required
 
 ## Get all ad units for a campaign
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units -H 'Authorization: Token token="your_auth_token"'
 ```
 
@@ -697,7 +696,7 @@ Parameter | Description | Required
 
 ## Get a specific ad unit for a campaign
 
-```shell
+```
 curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/ad_units/:ad_unit_id -H 'Authorization: Token token="your_auth_token"'
 ```
 
