@@ -278,7 +278,7 @@ This endpoint retrieves a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | ---------
-:campaign_id | The ID of the campaign to retrieve | Yes
+:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
 
 
 ## Get Campaign Interval Data 
@@ -327,7 +327,7 @@ This endpoint retrieves interval data about a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id| The ID of the campaign to retrieve | Yes
+:campaign_id| The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
 :interval | Time interval at which to show data| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
@@ -382,7 +382,7 @@ This endpoint retrieves category specific data about a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve | Yes
+:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
 :category | Type of data to filter by| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
@@ -465,7 +465,7 @@ This endpoint retrieves all placements for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve | Yes
+:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
 
 
 ## Get a specific placement for a campaign
@@ -540,8 +540,8 @@ This endpoint retrieves a specific placement for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve | Yes
-:placement_id | The ID of the placement to retrieve| Yes
+:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:placement_id | The ID of the placement to retrieve (24 alphanumeric character ID)| Yes
 
 ## Get Placement Specific Data 
 
@@ -589,7 +589,7 @@ This endpoint retrieves placement specific data about a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve | Yes
+:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
 :placement_category | Type of placement category to filter by| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
@@ -626,7 +626,7 @@ This endpoint retrieves the top 10 placements by click-through rate for a campai
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve | Yes
+:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
 
 
 
@@ -690,7 +690,7 @@ This endpoint retrieves all ad units belonging to a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve | Yes
+:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
 
 
 
@@ -752,8 +752,8 @@ This endpoint retrieves a specific ad unit for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve | Yes
-:ad_unit_id | The ID of the ad unit to retrieve| Yes
+:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:ad_unit_id | The ID of the ad unit to retrieve (24 alphanumeric character ID)| Yes
 
 
 
