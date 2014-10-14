@@ -1214,36 +1214,36 @@ Parameter | Description | Required
 Parameter | Potential Values | Parameter Type | Required
 --------- | ----------- | -------- | --------
 :adm_tag_type | Adm Tag Type ("pscript", "pscript_backup", "pnoscript") | String|No
-:ad_format_id | more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_formats -H 'Authorization: Token token="your_auth_token"'| String|Yes
-:rtb_setting.category_id | Category of the ad unit (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_categories -H 'Authorization: Token token="your_auth_token"')|String| No 
+:ad_format_id | more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_formats -H 'Authorization: Token token="your_auth_token"'](#) </div>| String|Yes
+:rtb_setting.category_id | Category of the ad unit -- more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_categories -H 'Authorization: Token token="your_auth_token"'](#)</div>|String| No 
 :rtb_setting.catch_up_type | Pace either 'Asap' (deliver hourly impressions as quickly as possible) or 'Spread Evenly' (deliver consistently throughout the hour) or 'None' |String| No 
 :rtb_setting.auto_exchange_weights | Allow RUN's algorithm to determine which exchanges to run ads on. If false, must specify exchange weights.|Boolean| No 
-:rtb_setting.exchange_weights | Manually select the exchanges and corresponding weights to run ads on. Required if auto_exchange_weights is set to false. (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_exchanges_weights -H 'Authorization: Token token="your_auth_token"')|Hash| No 
-:rtb_setting.ad_type_id | Ad Type (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_type -H 'Authorization: Token token="your_auth_token"')|String| No 
+:rtb_setting.exchange_weights | Manually select the exchanges and corresponding weights to run ads on. Required if auto_exchange_weights is set to false -- more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_exchanges_weights -H 'Authorization: Token token="your_auth_token"')](#)</div>|Hash| No 
+:rtb_setting.ad_type_id | Ad Type -- more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_type -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
 :rtb_setting.creative_attribute_id |Declare any important attributes of your tag (expandable, click to play, etc.) |String| No 
 :rtb_setting.mraid_has_video |Include if running an MRAID tag that plays a video ad |Boolean| No 
 :rtb_setting.video_types |Declare what kind of video files are part of the tag (MP4, FLV, etc) |String| No 
 :rtb_setting.video_start_delays | String of integers. Values are: ["Preroll", "0"], ["Midroll", "-1"], ["Postroll", "-2"] |String| No 
 :rtb_setting.video_playback_methods | String of integers. Values are: ["Auto-play sound on", "1"], ["Auto-play sound off", "2"], ["Click-to-play", "3"], ["Mouse-over", "4"] |String| No 
-:rtb_setting.isps | Choose a whitelist of ISPs to target (more info: curl -X GET -d "name={name} http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_isps -H 'Authorization: Token token="your_auth_token"')|Array| No 
+:rtb_setting.isps | Choose a whitelist of ISPs to target -- more info: <div>[curl -X GET -d "name={name} http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_isps -H 'Authorization: Token token="your_auth_token"')](#)</div>|Array| No 
 :rtb_setting.geo_type |Choose the dimension of your geo-target (country, DMA, ZIP, etc.) |String| No 
-:rtb_setting.country | more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_countries -H 'Authorization: Token token="your_auth_token"'|String| No 
-:rtb_setting.region |more info: curl -X GET -d "name={STATE/REGION}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_regions -H 'Authorization: Token token="your_auth_token"' |String| No 
-:rtb_setting.dma_ids |more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_dmas -H 'Authorization: Token token="your_auth_token"' |String| No 
-:rtb_setting.geo_points_radii_csv |more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_geo_points -H 'Authorization: Token token="your_auth_token"' |String| No 
-:rtb_setting.x_bs_attrs | Blacklist certain categories of content (ie Adult, Alcohol, etc - more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_blacklist_categories -H 'Authorization: Token token="your_auth_token"') | Array| No
-:rtb_setting.category_ids |Target by IAB Category (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_categories -H 'Authorization: Token token="your_auth_token"')|String| No 
-:rtb_setting.device_makes | If device_targeting is set to Custom, target specfic device makers only (ie Apple - more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_makes -H 'Authorization: Token token="your_auth_token"')|String| No 
-:rtb_setting.device_models | If device_targeting is set to Custom, target specific device models only (ie iPhone - more info: curl -X GET -d "name={Device Model}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_models -H 'Authorization: Token token="your_auth_token"')|String| No 
-:rtb_setting.segment_ids | Target a third party data segment (more info: curl -X GET -d "name={name}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_segments -H 'Authorization: Token token="your_auth_token"')|String| No 
+:rtb_setting.country | more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_countries -H 'Authorization: Token token="your_auth_token"'](#)</div>|String| No 
+:rtb_setting.region |more info: <div>[curl -X GET -d "name={STATE/REGION}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_regions -H 'Authorization: Token token="your_auth_token"'](#)</div> |String| No 
+:rtb_setting.dma_ids |more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_dmas -H 'Authorization: Token token="your_auth_token"'](#)</div> |String| No 
+:rtb_setting.geo_points_radii_csv |more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_geo_points -H 'Authorization: Token token="your_auth_token"'](#)</div> |String| No 
+:rtb_setting.x_bs_attrs | Blacklist certain categories of content (ie Adult, Alcohol, etc -- more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_blacklist_categories -H 'Authorization: Token token="your_auth_token"')](#)</div> | Array| No
+:rtb_setting.category_ids |Target by IAB Category (more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_categories -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
+:rtb_setting.device_makes | If device_targeting is set to Custom, target specfic device makers only (ie Apple - more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_makes -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
+:rtb_setting.device_models | If device_targeting is set to Custom, target specific device models only (ie iPhone - more info: <div>[curl -X GET -d "name={Device Model}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_models -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
+:rtb_setting.segment_ids | Target a third party data segment (more info: <div>[curl -X GET -d "name={name}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_segments -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
 :rtb_setting.segments_and | Should be set to true if you want to target the union of all segments in segment_ids. Default is false. | Boolean | No
-:rtb_setting.not_segments | Can explicitly exclude specific targeting segments. It's the inverse of segment_ids.  (more info: curl -X GET -d "name={name}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_segments -H 'Authorization: Token token="your_auth_token"')| Array | No
-:rtb_setting.os | Target specific operating systems only (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_os -H 'Authorization: Token token="your_auth_token"') |String| No 
+:rtb_setting.not_segments | Can explicitly exclude specific targeting segments. It's the inverse of segment_ids.  (more info: <div>[curl -X GET -d "name={name}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_segments -H 'Authorization: Token token="your_auth_token"')](#)</div>| Array | No
+:rtb_setting.os | Target specific operating systems only (more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_os -H 'Authorization: Token token="your_auth_token"')](#)</div> |String| No 
 :rtb_setting.age | Target users of certain ages only. Format should be an array that consists of two integers which represents a range: [24,55] would target ages 24-55|Array| No 
 :rtb_setting.day_parting | Only buy media within a certain window during the day or on specific days|Array| No
 :rtb_setting.placement_objective |Hash that contains start_at, end_at, and charging_amount| Hash| No
 :rtb_setting.sitelist_ids |Ids of Sitelists to target|String| No
-:rtb_setting.language_country_ids | Target devices with specific languages set  (more info: curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_language_countries -H 'Authorization: Token token="your_auth_token"') |String| No
+:rtb_setting.language_country_ids | Target devices with specific languages set  (more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_language_countries -H 'Authorization: Token token="your_auth_token"')](#)</div> |String| No
 :rtb_setting.viewability | Target top x% of impressions most likely to be viewed. Values are: ["VTOP10", "VTOP20", "VTOP35", "VTOP50", "VTOP75"]| Array | No
 
 
