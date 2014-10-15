@@ -1214,38 +1214,412 @@ Parameter | Description | Required
 Parameter | Potential Values | Parameter Type | Required
 --------- | ----------- | -------- | --------
 :adm_tag_type | Adm Tag Type ("pscript", "pscript_backup", "pnoscript") | String|No
-:ad_format_id | more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_formats -H 'Authorization: Token token="your_auth_token"'](#) </div>| String|Yes
-:rtb_setting.category_id | Category of the ad unit -- more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_categories -H 'Authorization: Token token="your_auth_token"'](#)</div>|String| No 
+:ad_format_id | more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_formats](#) </div>| String|Yes
+:rtb_setting.category_id | Category of the ad unit -- more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_categories](#)</div>|String| No 
 :rtb_setting.catch_up_type | Pace either 'Asap' (deliver hourly impressions as quickly as possible) or 'Spread Evenly' (deliver consistently throughout the hour) or 'None' |String| No 
 :rtb_setting.auto_exchange_weights | Allow RUN's algorithm to determine which exchanges to run ads on. If false, must specify exchange weights.|Boolean| No 
-:rtb_setting.exchange_weights | Manually select the exchanges and corresponding weights to run ads on. Required if auto_exchange_weights is set to false -- more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_exchanges_weights -H 'Authorization: Token token="your_auth_token"')](#)</div>|Hash| No 
-:rtb_setting.ad_type_id | Ad Type -- more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_type -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
+:rtb_setting.exchange_weights | Manually select the exchanges and corresponding weights to run ads on. Required if auto_exchange_weights is set to false -- more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_exchanges_weights](#)</div>|Hash| No 
+:rtb_setting.ad_type_id | Ad Type -- more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_ad_type](#)</div>|String| No 
 :rtb_setting.creative_attribute_id |Declare any important attributes of your tag (expandable, click to play, etc.) |String| No 
 :rtb_setting.mraid_has_video |Include if running an MRAID tag that plays a video ad |Boolean| No 
 :rtb_setting.video_types |Declare what kind of video files are part of the tag (MP4, FLV, etc) |String| No 
 :rtb_setting.video_start_delays | String of integers. Values are: ["Preroll", "0"], ["Midroll", "-1"], ["Postroll", "-2"] |String| No 
 :rtb_setting.video_playback_methods | String of integers. Values are: ["Auto-play sound on", "1"], ["Auto-play sound off", "2"], ["Click-to-play", "3"], ["Mouse-over", "4"] |String| No 
-:rtb_setting.isps | Choose a whitelist of ISPs to target -- more info: <div>[curl -X GET -d "name={name} http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_isps -H 'Authorization: Token token="your_auth_token"')](#)</div>|Array| No 
+:rtb_setting.isps | Choose a whitelist of ISPs to target -- more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_isps?name={isp_name}](#)</div>|Array| No 
 :rtb_setting.geo_type |Choose the dimension of your geo-target (country, DMA, ZIP, etc.) |String| No 
-:rtb_setting.country | more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_countries -H 'Authorization: Token token="your_auth_token"'](#)</div>|String| No 
-:rtb_setting.region |more info: <div>[curl -X GET -d "name={STATE/REGION}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_regions -H 'Authorization: Token token="your_auth_token"'](#)</div> |String| No 
-:rtb_setting.dma_ids |more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_dmas -H 'Authorization: Token token="your_auth_token"'](#)</div> |String| No 
-:rtb_setting.geo_points_radii_csv |more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_geo_points -H 'Authorization: Token token="your_auth_token"'](#)</div> |String| No 
-:rtb_setting.x_bs_attrs | Blacklist certain categories of content (ie Adult, Alcohol, etc -- more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_blacklist_categories -H 'Authorization: Token token="your_auth_token"')](#)</div> | Array| No
-:rtb_setting.category_ids |Target by IAB Category (more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_categories -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
-:rtb_setting.device_makes | If device_targeting is set to Custom, target specfic device makers only (ie Apple - more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_makes -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
-:rtb_setting.device_models | If device_targeting is set to Custom, target specific device models only (ie iPhone - more info: <div>[curl -X GET -d "name={Device Model}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_models -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
-:rtb_setting.segment_ids | Target a third party data segment (more info: <div>[curl -X GET -d "name={name}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_segments -H 'Authorization: Token token="your_auth_token"')](#)</div>|String| No 
+:rtb_setting.country | more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_countries](#)</div>|String| No 
+:rtb_setting.region |more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_regions?name={state_name}](#)</div> |String| No 
+:rtb_setting.dma_ids |more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_dmas](#)</div> |String| No 
+:rtb_setting.geo_points_radii_csv |more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_geo_points](#)</div> |String| No 
+:rtb_setting.x_bs_attrs | Blacklist certain categories of content (ie Adult, Alcohol, etc -- more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_blacklist_categories](#)</div> | Array| No
+:rtb_setting.category_ids |Target by IAB Category (more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_categories](#)</div>|String| No 
+:rtb_setting.device_makes | If device_targeting is set to Custom, target specfic device makers only (ie Apple - more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_makes](#)</div>|String| No 
+:rtb_setting.device_models | If device_targeting is set to Custom, target specific device models only (ie iPhone - more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_device_models?name={device_model_name}](#)</div>|String| No 
+:rtb_setting.segment_ids | Target a third party data segment (more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_segments?name={segment_name}](#)</div>|String| No 
 :rtb_setting.segments_and | Should be set to true if you want to target the union of all segments in segment_ids. Default is false. | Boolean | No
-:rtb_setting.not_segments | Can explicitly exclude specific targeting segments. It's the inverse of segment_ids.  (more info: <div>[curl -X GET -d "name={name}" http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_segments -H 'Authorization: Token token="your_auth_token"')](#)</div>| Array | No
-:rtb_setting.os | Target specific operating systems only (more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_os -H 'Authorization: Token token="your_auth_token"')](#)</div> |String| No 
+:rtb_setting.not_segments | Can explicitly exclude specific targeting segments. It's the inverse of segment_ids. (more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_segments?name={segment_name})](#)</div>| Array | No
+:rtb_setting.os | Target specific operating systems only (more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_os](#)</div> |String| No 
 :rtb_setting.age | Target users of certain ages only. Format should be an array that consists of two integers which represents a range: [24,55] would target ages 24-55|Array| No 
 :rtb_setting.day_parting | Only buy media within a certain window during the day or on specific days|Array| No
 :rtb_setting.placement_objective |Hash that contains start_at, end_at, and charging_amount| Hash| No
 :rtb_setting.sitelist_ids |Ids of Sitelists to target|String| No
-:rtb_setting.language_country_ids | Target devices with specific languages set  (more info: <div>[curl http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_language_countries -H 'Authorization: Token token="your_auth_token"')](#)</div> |String| No
+:rtb_setting.language_country_ids | Target devices with specific languages set  (more info: <div>[GET http://portal.rundsp.com/api/v1/campaigns/{Campaign_ID}/placements/list_language_countries](#)</div> |String| No
 :rtb_setting.viewability | Target top x% of impressions most likely to be viewed. Values are: ["VTOP10", "VTOP20", "VTOP35", "VTOP50", "VTOP75"]| Array | No
 
+> Below is a sample POST request to create a Placement
+
+```json
+{  
+   "placement"   =>   {  
+      "_id"      =>"53bed7a869702d29db120000",
+      "campaign_id"      =>"53beca4c69702d4039d90000",
+      "aasm_state"      =>"pending",
+      "ad_format_id"      =>"50c8cbb91aeaf0052600195d",
+      "ad_unit_ids"      =>      [  
+         "53e3b47869702d1fface0000",
+         "53bed72669702d269e0e0000",
+         "53bed71069702d26ae020000"
+      ],
+      "adm_tag_type"      =>"pscript",
+      "avg_clearing_cpm"      =>0,
+      "avg_cpm"      =>0,
+      "click_conversions"      =>0,
+      "clicks"      =>0,
+      "ctr"      =>0,
+      "delivery_type"      =>"Normal",
+      "external_clicks"      =>0,
+      "external_impressions"      =>0,
+      "external_mapping"      =>"",
+      "failed_to_sync_at"      =>nil,
+      "failures"      =>nil,
+      "goal_type"      =>"impressions",
+      "goal_value"      =>"40000",
+      "goal_target_clearing_cost"      =>"0.00",
+      "goal_target_client_cost"      =>"0.00",
+      "impressions"      =>0,
+      "name"      =>"Albany,
+      GA_Run of Network (Flash)_160x600_2/12/125-2/28/15",
+      "noscript_ad_unit_id"      =>nil,
+      "placement_id"      =>48138,
+      "placement_objective"      =>      {  
+         "start_at"         =>"2015-02-12",
+         "end_at"         =>"2015-03-01",
+         "charging_amount"         =>"2.80"
+      },
+      "remote_campaign_id"      =>2290,
+      "rtb"      =>true,
+      "rtb_setting"      =>      {  
+         "live"         =>false,
+         "price"         =>"2.50",
+         "category_id"         =>"50dc659c254dee58e4000003",
+         "catch_up_type"         =>"asap",
+         "frequency_cap"         =>true,
+         "frequency_cap_value"         =>"3",
+         "frequency_cap_interval_days"         =>"1",
+         "serve_300x50_in_320x50"         =>false,
+         "adm"         =>"    <script type=\"text/javascript\" language=\"JavaScript\"> \n      (function()         {  
+            \n        ADGEAR_SOURCE_CLICKTRACKER = \"__CLICK_TRACKER_URL__\";   \n        ADGEAR_SOURCE_CLICKTRACKER_EXPECTS_ENCODED = false;   \n        ADGEAR_SOURCE_CLICKTRACKER_IS_ENCODED = false;   \n        ADGEAR_SOURCE_CLICKTRACKER_IS_DOUBLE_ENCODED = false;             \n        var randomnum = \"__RANDOM_NUMBER__\";              \n        var agref = \"__REFERER__\";    \n        var proto = \"http:            \";     \n        randomnum = String(randomnum); \n        if (window.location.protocol == \"https:            \") proto = \"https:\";   \n        if (randomnum.substring(0,
+            2            ) == \"__\") randomnum = String(Math.random());\n        \n        var scr = '<scr' + 'ipt type=\"text/ja' + 'vascr' + 'ipt\" s' + 'rc=\"' + \n          proto + '//d.runadtag.com' + '/impressions/ext/p=' +       '48138' + '.js?AG_R=' + \n          randomnum + '&RUN_XNAME=__XNAME__' + \n          '&RUN_RTBWP=$            {  
+               AUCTION_PRICE
+            }            ' + \n          '            &RUN_CT_ID=' + \n          (agref === \"\" ? \"\":(\"&AG_REF=\" + agref)) +       \n          '\"></scr' + 'ipt>';\n        \n        document.writeln(scr); \n
+         }         )(); \n    </script>\n    \n    <iframe name=\"__bkframe\" height=\"0\" width=\"0\" frameborder=\"0\" src=\"javascript:         void(0)\"></iframe>\n    <script type=\"text/javascript\" src=\"http:         //tags.bkrtx.com/js/bk-coretag.js\"></script>\n    <script type=\"text/javascript\" src=\"http://match.rundsp.com/redirect.js?id=__RUN_DEVICE_OR_COOKIE__&mobile=__RUN_MOBILE__\"></script>\n",
+         "iurl"         =>"",
+         "ad_choice_provider"         =>"rundsp",
+         "ad_choice_position"         =>"top-right",
+         "domain"         =>"http://www.choosenissan.com/",
+         "ad_type_id"         =>"51b0e4a5254deebd6f000014",
+         "creative_attribute_id"         =>"51b0e4a5254deebd6f000001",
+         "mraid_has_video"         =>false,
+         "video_types"         =>nil,
+         "video_playback_methods"         =>         [  
+            "1",
+            "2",
+            "3",
+            "4"
+         ],
+         "video_start_delays"         =>         [  
+            "0",
+            "-1",
+            "-2"
+         ],
+         "use_addition_pixel"         =>false,
+         "addition_pixel"         =>"",
+         "auto_exchange_weights"         =>false,
+         "exchange_weights"         =>         {  
+            "Nexage"            =>"16",
+            "OpenX"            =>"24",
+            "mopub"            =>"12",
+            "rubicon"            =>"9",
+            "adx"            =>"29",
+            "spotx"            =>"4",
+            "liverail"            =>"6",
+            "brx"            =>"0"
+         },
+         "category_ids"         =>         [  
+            "50dc659c254dee58e4000004",
+            "50dc659c254dee58e4000005",
+            "50dc659c254dee58e4000017",
+            "50dc659c254dee58e4000007"
+         ],
+         "deal_id_value"         =>"",
+         "tld_wlist"         =>         [  
+            "edu",
+            "mil"
+         ],
+         "only_buy_transparent_inventory"         =>true,
+         "only_buy_clear_text"         =>true,
+         "uidh"         =>false,
+         "inventory_type"         =>"",
+         "ad_position"         =>"",
+         "exclude_all"         =>false,
+         "select_all"         =>false,
+         "x_bot_attrs"         =>"ESAHM",
+         "isps"         =>         [  
+            "American College Health Association",
+            "ACEP American College of Emergency Physicians",
+            "ALLTEL Corporation"
+         ],
+         "isp"         =>"",
+         "gender"         =>"ALL",
+         "only_buy_inventory_with_lat_lon"         =>true,
+         "only_buy_known_ip"         =>true,
+         "geo_type"         =>"country",
+         "country"         =>         [  
+            "US"
+         ],
+         "geo_zips"         =>"",
+         "region"         =>"514893611aeaf0619c000017",
+         "city"         =>"",
+         "dma_ids"         =>"",
+         "geo_points_radii_csv"         =>"31.576185,
+         -84.152368,
+         80500         ", "         video_min_width"=>"",
+         "video_min_height"         =>"",
+         "video_adtypes"         =>nil,
+         "ctr_optimize"         =>false,
+         "device_targeting"         =>"custom",
+         "device_makes"         =>"5155d571254dee586f000001",
+         "device_models"         =>"5155d571254dee586f000004,
+         5155         d571254dee586f000003",
+         "retargeting_pixel_ids"         =>nil,
+         "device_list_ids"         =>nil,
+         "segment_ids"         =>         [  
+            "530280aaf6618c3910000007",
+            "53028131f6618c3910000061",
+            "53028201f6618c3910000107",
+            "530280aaf6618c3910000005"
+         ],
+         "os"         =>         {  
+            "ios"            =>"latest",
+            "android"            =>"all",
+            "windows"            =>"all",
+            "macosx"            =>"all",
+            "windowsphone"            =>"all",
+            "blackberryos"            =>"all"
+         },
+         "age"         =>         [  
+            19,
+            80
+         ],
+         "day_parting"         =>         [  
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167
+         ],
+         "not_segment_ids"         =>nil,
+         "segments_and"         =>false,
+         "x_bs_attrs"         =>         [  
+            "EHAD",
+            "EHAL",
+            "EHDL",
+            "EHHT"
+         ],
+         "x_bs_attrs_exclude_all"         =>false,
+         "viewability"         =>         [  
+            "VTOP10"
+         ],
+         "viewability_select_all"         =>false
+      },
+      "state"      =>"pending",
+      "tactics"      =>"Contextual,
+      Behavioral",
+      "tag"      =>"<script type=\"text/javascript\" language=\"JavaScript\">\n(function()      {  
+         \n  ADGEAR_SOURCE_CLICKTRACKER = \"__CLICK_TRACKER_URL__\";\n  ADGEAR_SOURCE_CLICKTRACKER_EXPECTS_ENCODED = false;\n  ADGEAR_SOURCE_CLICKTRACKER_IS_ENCODED = false;\n  ADGEAR_SOURCE_CLICKTRACKER_IS_DOUBLE_ENCODED = false;\n  var randomnum = \"__RANDOM_NUMBER__\";\n  var agref = \"\";\n  var proto = \"http:         \";\n  if (!agref.match(/^https?/i)) agref = \"\";\n  if (((typeof __ADGEAR_SSL != \"undefined\") && __ADGEAR_SSL) || (window.location.protocol == \"https:         \")) proto = \"https:\";\n  if (randomnum.substring(0,
+         2         ) == \"__\") randomnum = String(Math.random());\n  document.writeln('<scr' + 'ipt type=\"text/ja' + 'vascr' + 'ipt\" s' + 'rc=\"' +\n      proto + '//d.runadtag.com' + '/impressions/ext/p=' +\n      '48138' + '.js?AG_R=' + randomnum +\n      (agref === \"\" ? \"\":(\"&AG_REF=\" + encodeURIComponent(agref))) +\n      '\"></scr' + 'ipt>');\n
+      }      )();\n</script>\n",
+      "tag_type"      =>"pscript",
+      "total_clearing_cost"      =>0,
+      "total_cost"      =>0,
+      "view_conversions"      =>0,
+      "cpa_goal"      =>"0.00",
+      "sitelist_type"      =>"whitelist",
+      "sitelist_ids"      =>      [  
+         "5334560b115a04f82f000069"
+      ],
+      "portal_updated_at"      =>"2014-10-14T19:22:36+00:00      ", "      video_formats"=>nil,
+      "language_country_ids"      =>"",
+      "append_extra_metadata_to_clicktracker"      =>false,
+      "is_baselined"      =>0,
+      "vast_url"      =>nil,
+      "has_companion_ad_unit"      =>false,
+      "creative_rotation_weights"      =>      {  
+         "53e3b47869702d1fface0000"         =>"45",
+         "53bed72669702d269e0e0000"         =>"19",
+         "53bed71069702d26ae020000"         =>"36"
+      },
+      "selection_mechanism_type"      =>"weighted",
+      "retargeting_pixel_segment_ids"      =>nil
+   },
+   "campaign_id"   =>"53beca4c69702d4039d90000",
+   "id"   =>"53bed7a869702d29db120000"
+}
+
+```
 
 # Ad Units
 
