@@ -1,3 +1,4 @@
+
 ---
 title: API Reference
 
@@ -694,7 +695,6 @@ curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/placements -H 'Autho
         "remote_id": 220768,
         "start_at": "2013-07-15T00:00:00.000Z"
     },
-    "remote_campaign_id": null,
     "rtb": true,
     "state": "pending",
     "tactics": [],
@@ -769,7 +769,6 @@ curl -X POST -d "attribute1=value1&attribute2=value2" http://portal.rundsp.com/a
         "remote_id": 220768,
         "start_at": "2013-07-15T00:00:00.000Z"
     },
-    "remote_campaign_id": null,
     "rtb": true,
     "state": "pending",
     "tactics": [],
@@ -928,7 +927,6 @@ curl -X PUT -d "attribute1=value1&attribute2=value2" http://portal.rundsp.com/ap
         "remote_id": 220768,
         "start_at": "2013-07-15T00:00:00.000Z"
     },
-    "remote_campaign_id": null,
     "rtb": true,
     "state": "pending",
     "tactics": [],
