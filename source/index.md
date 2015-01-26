@@ -279,7 +279,7 @@ This endpoint retrieves a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | ---------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
+:campaign_id | The ID of the campaign to retrieve (either a 24 alphanumeric character Mongo ID or Ad Gear placement_id) | Yes
 
 ## Create a Campaign
 
@@ -400,7 +400,7 @@ This endpoint creates a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | ---------
-:name | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:name | Name of the campaign | Yes
 :start_at | Date campaign starts | Yes
 :end_at| Date campaign end | Yes
 :advertiser_name| Name of advertiser| Yes
@@ -529,12 +529,13 @@ This endpoint updates a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | ---------
-:name | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
-:start_at | Date campaign starts | Yes
-:end_at| Date campaign end | Yes
-:advertiser_name| Name of advertiser| Yes
-:placements_goal_type| Metric goal for placements | Yes
-:frequency_cap_by| Metric to cap by | Yes
+:campaign_id | The ID of the campaign to retrieve (either a 24 alphanumeric character Mongo ID or Ad Gear placement_id) | Yes
+:name | Name of the campaign | No
+:start_at | Date campaign starts | No
+:end_at| Date campaign end | No
+:advertiser_name| Name of advertiser| No
+:placements_goal_type| Metric goal for placements | No
+:frequency_cap_by| Metric to cap by | No
 :frequency_cap_value| Value for that cap| No
 :postback_conversion_campaign| | No
 :rtb (default = true in controller)| |
@@ -589,7 +590,7 @@ This endpoint retrieves interval data about a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id| The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the campaign to retrieve (either a 24 alphanumeric character Mongo ID or Ad Gear placement_id) | Yes
 :interval | Time interval at which to show data| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
@@ -644,7 +645,7 @@ This endpoint retrieves category specific data about a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
+:campaign_id | The ID of the campaign to retrieve (either a 24 alphanumeric character Mongo ID or Ad Gear placement_id) | Yes
 :category | Type of data to filter by| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
@@ -726,7 +727,7 @@ This endpoint retrieves all placements for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
+:campaign_id | The ID of the campaign to retrieve (either a 24 alphanumeric character Mongo ID or Ad Gear placement_id) | Yes
 
 
 ## Create a placement
@@ -801,7 +802,7 @@ This endpoint creates a placement for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the campaign to retrieve (either a 24 alphanumeric character Mongo ID or Ad Gear placement_id) | Yes
 :placement_id | The ID of the placement to update (24 alphanumeric character ID)| Yes
 
 ### Placement Parameters (Refer to the Placement Attribute Values section for valid values)
@@ -959,7 +960,7 @@ This endpoint updates a placement.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the campaign to retrieve (either a 24 alphanumeric character Mongo ID or Ad Gear placement_id) | Yes
 :placement_id | The ID of the placement to update (24 alphanumeric character ID)| Yes
 
 ### Placement Parameters (Refer to the Placement Attribute Values section for valid values)
