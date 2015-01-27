@@ -1014,7 +1014,7 @@ Parameter | Description | Parameter Type | Required
 :rtb_setting.ad_position | Choose above the fold or below the fold or both ("above" or "below". Both is default.) |String| No 
 :rtb_setting.category_ids |Target by IAB Category (Contextual Targeting) |String| No 
 :rtb_setting.ctr_optimize | Turn the CTR Algorithm On/Off (must have a baseline of information first) |Boolean| No 
-:rtb_setting.device_targeting | Target specific channels:rtb_setting. Desktop, Mobile, All, or Custom|String| No 
+:rtb_setting.device_targeting | Target specific channels:rtb_setting. Valid values are: desktop, mobile, phone, tablet, all, custom.|String| No
 :rtb_setting.device_makes | If device_targeting is set to Custom, target specfic device makers only |String| No 
 :rtb_setting.device_models | If device_targeting is set to Custom, target specific device models only |String| No 
 :rtb_setting.segment_ids | Target a third party data segment|String| No 
