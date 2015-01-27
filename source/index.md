@@ -1,16 +1,3 @@
-
----
-title: API Reference
-
-language_tabs:
-  - shell
-
-includes:
-  - errors
-
-search: true
----
-
 # Introduction
 
 Welcome to the RUN Campaign Management API. You can use this API to gain access to campaign details and analytics.
@@ -279,7 +266,7 @@ This endpoint retrieves a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | ---------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
+:campaign_id | The ID of the campaign | Yes
 
 ## Create a Campaign
 
@@ -400,7 +387,7 @@ This endpoint creates a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | ---------
-:name | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:name | The name of the campaign | Yes
 :start_at | Date campaign starts | Yes
 :end_at| Date campaign end | Yes
 :advertiser_name| Name of advertiser| Yes
@@ -529,7 +516,8 @@ This endpoint updates a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | ---------
-:name | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id| The ID of the campaign to update| Yes
+:name | The name of the campaign| Yes
 :start_at | Date campaign starts | Yes
 :end_at| Date campaign end | Yes
 :advertiser_name| Name of advertiser| Yes
@@ -589,7 +577,7 @@ This endpoint retrieves interval data about a specific campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id| The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id| The ID of the campaign| Yes
 :interval | Time interval at which to show data| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
@@ -644,7 +632,7 @@ This endpoint retrieves category specific data about a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
+:campaign_id | The ID of the campaign| Yes
 :category | Type of data to filter by| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
@@ -726,7 +714,7 @@ This endpoint retrieves all placements for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID) | Yes
+:campaign_id | The ID of the associated campaign | Yes
 
 
 ## Create a placement
@@ -801,7 +789,7 @@ This endpoint creates a placement for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign | Yes
 :placement_id | The ID of the placement to update (24 alphanumeric character ID)| Yes
 
 ### Placement Parameters (Refer to the Placement Attribute Values section for valid values)
@@ -959,7 +947,7 @@ This endpoint updates a placement.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign | Yes
 :placement_id | The ID of the placement to update (24 alphanumeric character ID)| Yes
 
 ### Placement Parameters (Refer to the Placement Attribute Values section for valid values)
@@ -1118,7 +1106,7 @@ This endpoint retrieves a specific placement for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign| Yes
 :placement_id | The ID of the placement to retrieve (24 alphanumeric character ID)| Yes
 
 ## Get Placement Specific Data 
@@ -1167,7 +1155,7 @@ This endpoint retrieves placement specific data about a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign| Yes
 :placement_category | Type of placement category to filter by| Yes
 :start_date | Start date of query| Yes
 :end_date | End date of query| Yes
@@ -1204,7 +1192,7 @@ This endpoint retrieves the top 10 placements by click-through rate for a campai
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign | Yes
 
 
 ## Placement Attribute Values
@@ -1680,7 +1668,7 @@ This endpoint retrieves all ad units belonging to a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign| Yes
 
 
 
@@ -1743,7 +1731,7 @@ This endpoint retrieves a specific ad unit for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign | Yes
 :ad_unit_id | The ID of the ad unit to retrieve (24 alphanumeric character ID)| Yes
 
 ## Upload an image file for an ad unit
@@ -1769,7 +1757,7 @@ This endpoint uploads an image.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign | Yes
 *Note: The file parameter name must be 'fileupload' and only one file can be uploaded. Valid extensions are: '.png', '.jpg', '.jpeg', '.gif', '.swf'
 ## Upload a video file for an ad unit
 
@@ -1794,7 +1782,7 @@ This endpoint uploads a video file.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign | Yes
 *Note: The file parameter name must be 'fileupload_{FILE_EXTENSION}' and up to three files can be uploaded simultaneously. Valid file extensions are: '.flv', '.mp4', '.webm'
 ## Create an ad unit for a campaign
 
@@ -1855,7 +1843,7 @@ This endpoint creates an ad unit for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign | Yes
 :name | The name of the ad unit | Yes
 :ad_format | Dimensions of ad | Yes
 :adunit_click_url | Where user is directed upon click | Yes
@@ -1932,7 +1920,7 @@ This endpoint updates an ad unit for a campaign.
 
 Parameter | Description | Required
 --------- | ----------- | --------
-:campaign_id | The ID of the campaign to retrieve (24 alphanumeric character ID)| Yes
+:campaign_id | The ID of the associated campaign| Yes
 :name | The name of the ad unit | Yes
 :ad_format | Dimensions of ad | Yes
 :adunit_click_url | Where user is directed upon click | Yes
@@ -1951,3 +1939,75 @@ Parameter | Description | Required
     "Custom XML", "VAST 2 In-Stream Video", "Javascript"
 
 
+# Conversion Pixels
+
+## Get all conversion pixels for a campaign
+
+```shell
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/conversion_pixels -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "_id": "547c751e69702d5527010000", 
+    "created_at": "2014-12-01T14:03:10.288Z", 
+    "embed_code": "<img src=\"https://d.runadtag.com/conversions/cv=1373/chip=b4f121605b9001321a1d0024e87a30c2.gif?AG_REV=\" width=\"1\" height=\"1\" border=\"0\" />", 
+    "name": "Metlife_Conversion", 
+    "post_back_conversion": false, 
+    "remote_embed_code": "<img src=\"https://d.runadtag.com/conversions/cv=1373/chip=b4f121605b9001321a1d0024e87a30c2.gif?AG_REV=\" width=\"1\" height=\"1\" border=\"0\" />\n", 
+    "tag_type": "conversion_pixel_ssl",
+    "conversion_pixel_id": "2214"
+}
+
+```
+
+This endpoint retrieves all conversion pixels belonging to a campaign.
+
+
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/conversion_pixels`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+:campaign_id | The ID of the associated campaign | Yes
+
+
+
+## Get a specific conversion pixel for a campaign
+
+```shell
+curl http://portal.rundsp.com/api/v1/campaigns/:campaign_id/conversion_pixels/:conversion_pixel_id -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "_id": "547c751e69702d5527010000", 
+    "created_at": "2014-12-01T14:03:10.288Z", 
+    "embed_code": "<img src=\"https://d.runadtag.com/conversions/cv=1373/chip=b4f121605b9001321a1d0024e87a30c2.gif?AG_REV=\" width=\"1\" height=\"1\" border=\"0\" />", 
+    "name": "Metlife_Conversion", 
+    "post_back_conversion": false, 
+    "remote_embed_code": "<img src=\"https://d.runadtag.com/conversions/cv=1373/chip=b4f121605b9001321a1d0024e87a30c2.gif?AG_REV=\" width=\"1\" height=\"1\" border=\"0\" />\n", 
+    "tag_type": "conversion_pixel_ssl",
+    "conversion_pixel_id": "2214"
+}
+```
+
+This endpoint retrieves a specific conversion pixel belonging to a campaign.
+
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/campaigns/:campaign_id/conversion_pixels/:conversion_pixel_id`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+:campaign_id | The ID of the associated campaign | Yes
+:conversion_pixel_id | The ID of the conversion pixel to retrieve (24 alphanumeric character ID)| Yes
