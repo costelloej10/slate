@@ -790,7 +790,7 @@ This endpoint creates a placement for a campaign.
 Parameter | Description | Required
 --------- | ----------- | --------
 :campaign_id | The ID of the associated campaign | Yes
-:placement_id | The ID of the placement to update (24 alphanumeric character ID)| Yes
+:placement_id | The ID of the placement to update| Yes
 
 ### Placement Parameters (Refer to the Placement Attribute Values section for valid values)
 
@@ -948,7 +948,7 @@ This endpoint updates a placement.
 Parameter | Description | Required
 --------- | ----------- | --------
 :campaign_id | The ID of the associated campaign | Yes
-:placement_id | The ID of the placement to update (24 alphanumeric character ID)| Yes
+:placement_id | The ID of the placement to update| Yes
 
 ### Placement Parameters (Refer to the Placement Attribute Values section for valid values)
 
@@ -1107,7 +1107,7 @@ This endpoint retrieves a specific placement for a campaign.
 Parameter | Description | Required
 --------- | ----------- | --------
 :campaign_id | The ID of the associated campaign| Yes
-:placement_id | The ID of the placement to retrieve (24 alphanumeric character ID)| Yes
+:placement_id | The ID of the placement to retrieve| Yes
 
 ## Get Placement Specific Data 
 
@@ -1732,7 +1732,7 @@ This endpoint retrieves a specific ad unit for a campaign.
 Parameter | Description | Required
 --------- | ----------- | --------
 :campaign_id | The ID of the associated campaign | Yes
-:ad_unit_id | The ID of the ad unit to retrieve (24 alphanumeric character ID)| Yes
+:ad_unit_id | The ID of the ad unit to retrieve| Yes
 
 ## Upload an image file for an ad unit
 
@@ -2010,4 +2010,4 @@ This endpoint retrieves a specific conversion pixel belonging to a campaign.
 Parameter | Description | Required
 --------- | ----------- | --------
 :campaign_id | The ID of the associated campaign | Yes
-:conversion_pixel_id | The ID of the conversion pixel to retrieve (24 alphanumeric character ID)| Yes
+:conversion_pixel_id | The ID of the conversion pixel to retrieve| Yes
