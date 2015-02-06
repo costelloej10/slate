@@ -2149,10 +2149,7 @@ curl http://portal.rundsp.com/api/v1/segments/list_types -H 'Authorization: Toke
 > The above command returns JSON structured like this:
 
 ```json
-{
-  ['bluekai', 'brand', 'grapeshot']
-}
-
+  "['bluekai', 'brand', 'grapeshot']"
 ```
 
 This endpoint retrieves a list of segment types
