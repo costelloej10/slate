@@ -2011,3 +2011,157 @@ Parameter | Description | Required
 --------- | ----------- | --------
 :campaign_id | The ID of the associated campaign | Yes
 :conversion_pixel_id | The ID of the conversion pixel to retrieve| Yes
+
+
+
+# Segments
+
+## Get all segments
+
+```shell
+curl http://portal.rundsp.com/api/v1/segments -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "54d50b5a4a6f6895722c0000",
+    "first_party": false,
+    "name": "BKCategory1",
+    "segment_type": "bluekai",
+    "dynamo_short_id": "5",
+    "cnt_cookie": 0,
+    "cnt_uidh": 0,
+    "cnt_mobile": 0,
+    "price": 0,
+    "parent_id": null,
+    "meta": null,
+    "xinfer_child": null,
+    "xinfer_user_mobile_total_count": 0,
+    "xinfer_user_cookie_total_count": 0,
+    "created_at": "2015-02-06T18: 43: 38.805Z",
+    "xinfer_parent": null
+}
+```
+
+This endpoint retrieves all segments
+
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/segments`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+None
+
+## Get a specfic segment and its subsegments if any
+
+```shell
+curl http://portal.rundsp.com/api/v1/segments/:segment_id -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "54d50b5a4a6f6895722c0000",
+    "first_party": false,
+    "name": "BKCategory1",
+    "segment_type": "bluekai",
+    "dynamo_short_id": "5",
+    "cnt_cookie": 0,
+    "cnt_uidh": 0,
+    "cnt_mobile": 0,
+    "price": 0,
+    "parent_id": null,
+    "meta": null,
+    "xinfer_child": null,
+    "xinfer_user_mobile_total_count": 0,
+    "xinfer_user_cookie_total_count": 0,
+    "created_at": "2015-02-06T18: 43: 38.805Z",
+    "xinfer_parent": null
+}
+```
+
+This endpoint retrieves a specified segment and its subsegments if any
+
+
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/segments/:segment_id`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+:segment_id | The ID of the segment to be retrieved | Yes
+
+## Get all segments of a particular type
+
+```shell
+curl http://portal.rundsp.com/api/v1/segments/types/:type -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "id": "54d50b5a4a6f6895722c0000",
+    "first_party": false,
+    "name": "BKCategory1",
+    "segment_type": "bluekai",
+    "dynamo_short_id": "5",
+    "cnt_cookie": 0,
+    "cnt_uidh": 0,
+    "cnt_mobile": 0,
+    "price": 0,
+    "parent_id": null,
+    "meta": null,
+    "xinfer_child": null,
+    "xinfer_user_mobile_total_count": 0,
+    "xinfer_user_cookie_total_count": 0,
+    "created_at": "2015-02-06T18: 43: 38.805Z",
+    "xinfer_parent": null
+}
+```
+
+This endpoint retrieves all segments of a particular type
+
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/segments/types/:type`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+:type | The type of segment | Yes
+
+## Get a list of segment types
+
+```shell
+curl http://portal.rundsp.com/api/v1/segments/list_types -H 'Authorization: Token token="your_auth_token"'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  ['bluekai', 'brand', 'grapeshot']
+}
+
+```
+
+This endpoint retrieves a list of segment types
+### HTTP Request
+
+`GET http://portal.rundsp.com/api/v1/segments/list_types`
+
+### URL Parameters
+
+Parameter | Description | Required
+--------- | ----------- | --------
+None
