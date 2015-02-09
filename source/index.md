@@ -2026,22 +2026,17 @@ curl http://portal.rundsp.com/api/v1/segments/:segment_id -H 'Authorization: Tok
 
 ```json
 {
-    "id": "54d50b5a4a6f6895722c0000",
+    "id": "54d8f25d4a6f68c9247c0000",
     "first_party": false,
-    "name": "BKCategory1",
+    "name": "Branded Data 1",
     "segment_type": "bluekai",
-    "dynamo_short_id": "5",
+    "dynamo_short_id": "3",
     "cnt_cookie": 0,
     "cnt_uidh": 0,
     "cnt_mobile": 0,
-    "price": 0,
-    "parent_id": null,
-    "meta": null,
-    "xinfer_child": null,
-    "xinfer_user_mobile_total_count": 0,
-    "xinfer_user_cookie_total_count": 0,
-    "created_at": "2015-02-06T18: 43: 38.805Z",
-    "xinfer_parent": null
+    "price": 0.0,
+    "parent_id": "54d8f25d4a6f68c9247b0000",
+    "created_at": "2015-02-09T17:46:05.163Z"
 }
 ```
 
@@ -2068,22 +2063,17 @@ curl http://portal.rundsp.com/api/v1/segments/list_types -H 'Authorization: Toke
 
 ```json
 {
-    "id": "54d50b5a4a6f6895722c0000",
+    "id": "54d8f25d4a6f68c9247c0000",
     "first_party": false,
-    "name": "BKCategory1",
+    "name": "Branded Data 1",
     "segment_type": "bluekai",
-    "dynamo_short_id": "5",
+    "dynamo_short_id": "3",
     "cnt_cookie": 0,
     "cnt_uidh": 0,
     "cnt_mobile": 0,
-    "price": 0,
-    "parent_id": null,
-    "meta": null,
-    "xinfer_child": null,
-    "xinfer_user_mobile_total_count": 0,
-    "xinfer_user_cookie_total_count": 0,
-    "created_at": "2015-02-06T18: 43: 38.805Z",
-    "xinfer_parent": null
+    "price": 0.0,
+    "parent_id": "54d8f25d4a6f68c9247b0000",
+    "created_at": "2015-02-09T17:46:05.163Z"
 }
 ```
 
